@@ -1,4 +1,6 @@
-[
+const { Post } = require('../models');
+
+const postData = [
     {
       "title": "Looking for Volcano",
       "post_body": "Anyone know how to get to a volcano, need to throw something inside.",
@@ -17,4 +19,8 @@
       "date_created": "November 3, 2016",
       "user_id": 3
     }
-]
+];
+
+const seedPost = () => Post.bulkCreate(postData);
+
+module.exports = seedPost;
