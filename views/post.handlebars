@@ -16,12 +16,12 @@
       {{post.post_body}}
     </p>
   </div>
-  <div>
+</div>
+<div class="comment">
     {{#each comment.users as |user|}}
     <p>{{name}}</p>
     {{/each}}
     {{#each post.comments as |comment|}}
     {{> comments}}
     {{/each}}
-  </div>
 </div>
