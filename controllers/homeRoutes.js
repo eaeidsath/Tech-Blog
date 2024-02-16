@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -55,14 +55,15 @@ router.get('/post/:id', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find posts based on user ID
-    const userData = await Post.findAll({ where: { user_id: req.session.user_id }, include: [{ model: User, attributes: ['name'], },], });
+    const postData = await Post.findAll({ where: { user_id: req.session.user_id }, include: [{ model: User, attributes: ['name'], },], });
 
-    const user = userData.get({ plain: true });
+    const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('dashboard', {
-      ...user,
+      posts,
       logged_in: req.session.logged_in
     });
+    /* res.status(200).json({posts}); */
   } catch (err) {
     res.status(500).json(err);
   }
