@@ -3,12 +3,6 @@
     <h2>
       {{post.title}}
     </h2>
-    {{!-- <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p> --}}
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>
   <div class="col-md-7">
@@ -18,9 +12,6 @@
   </div>
 </div>
 <div class="comment">
-    {{#each comment.users as |user|}}
-    <p>{{name}}</p>
-    {{/each}}
     {{#each post.comments as |comment|}}
     {{> comments}}
     {{/each}}

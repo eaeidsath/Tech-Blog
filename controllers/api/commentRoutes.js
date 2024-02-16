@@ -7,6 +7,7 @@ router.post('/', async (req, res) => {
     const newComment = await Comment.create({
         ...req.body,
         user_id: req.session.user_id,
+        post_id: req.params.id
     });
 
     res.status(200).json(newComment);
@@ -15,21 +16,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-/* router.put('/:id', async (req, res) => {
-  const updatedTag = await Tag.update(
-    {
-      tag_name: req.body.tag_name,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  );
-  
-  res.json(updatedTag);
-}); */
-
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
   try {
@@ -37,11 +23,12 @@ router.delete('/:id', async (req, res) => {
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
+        post_id: req.params.id
       }
     });
 
     if (!commentData) {
-      res.status(404).json({ message: 'No tag found with this id!' });
+      res.status(404).json({ message: 'No comment found with this id!' });
       return;
     }
 
