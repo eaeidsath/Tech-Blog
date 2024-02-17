@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <form class="comment-form" {{!-- action="/posts/{{post.id}}/comments" method="post" --}}>
-      <textarea class='form-comment-body' placeholder="Comment"></textarea>
+    <form class="comment-form">
+      <textarea class='form comment-body' placeholder="Comment"></textarea>
       <div class="text-right">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button onclick="commentFormHandler()" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
   </div>
 </div>
-

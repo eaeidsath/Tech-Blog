@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Post, Comment } = require('../../models');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/new', async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -15,7 +14,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     // updates a category by id
     try {
       const postData = await Post.update(req.body, {
@@ -34,7 +33,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
@@ -51,6 +50,21 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.post('/:id/comments', async (req, res) => {
+  try {
+    const postID = req.params.id;
+    const newComment = await Comment.create({
+      ...req.body,
+      user_id: req.session.user_id,
+      post_id: postID
+  });
+    res.status(200).json(newComment);
+  } catch (err) {
+    console.log(req.params.id);
+    res.status(400).json(err);
   }
 });
 

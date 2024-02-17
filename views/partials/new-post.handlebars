@@ -10,18 +10,25 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <form class="post-form">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Title</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            <input type="text" class="form-control post-title" id="formGroupExampleInput" placeholder="Title">
         </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Post Content</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+        <div class="form-group">
+        <label for="post-summary">Post Content</label>
+        <textarea
+          name="summary"
+          class="form-control post-body"
+          id="post-summary"
+          placeholder="Post Content"
+        ></textarea>
         </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button onclick="postFormHandler()" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
