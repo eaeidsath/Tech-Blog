@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Comment } = require('../../models');
+const { Post } = require('../../models');
 
 router.post('/new', async (req, res) => {
   try {
@@ -50,21 +50,6 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
-  }
-});
-
-router.post('/:id/comments', async (req, res) => {
-  try {
-    const postID = req.params.id;
-    const newComment = await Comment.create({
-      ...req.body,
-      user_id: req.session.user_id,
-      post_id: postID
-  });
-    res.status(200).json(newComment);
-  } catch (err) {
-    console.log(req.params.id);
-    res.status(400).json(err);
   }
 });
 

@@ -1,22 +1,20 @@
 const router = require('express').Router();
-const { Comment, Post } = require('../../models');
-const getPostID = require('./postRoutes');
+const { Comment } = require('../../models');
 
-/* router.post('/new', async (req, res) => {
+router.post('/new', async (req, res) => {
   // create a new comment
   try {
-    const getPostID = Post.findByPk(req.params.id);
     const newComment = await Comment.create({
         ...req.body,
         user_id: req.session.user_id,
-        post_id: getPostID
+        post_id: req.body.post_id,
     });
 
     res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
-}); */
+});
 
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
