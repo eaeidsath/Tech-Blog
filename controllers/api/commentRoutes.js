@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   // create a new comment
   try {
     const newComment = await Comment.create({
         ...req.body,
         user_id: req.session.user_id,
-        post_id: req.params.id
+        /* post_id: req.params.id */
     });
 
     res.status(200).json(newComment);
@@ -16,14 +17,14 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   // delete on tag by its `id` value
   try {
     const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
-        post_id: req.params.id
+        /* post_id: req.params.id */
       }
     });
 

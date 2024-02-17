@@ -12,9 +12,13 @@
   </div>
 </div>
 <div class="comment">
-    {{#each post.comments as |comment|}}
-    {{> comments}}
-    {{/each}}
+  {{#each post.comments as |comment|}}
+  {{> comments}}
+  {{/each}}
+</div>
+<div>
+  {{> new-comment}}
 </div>
 
 <script src="./js/logout.js"></script>
+<script src="./js/new-comment.js"></script>
