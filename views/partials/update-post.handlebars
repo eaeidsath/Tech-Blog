@@ -9,16 +9,13 @@
         <form class="post-form">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Title</label>
-            <input type="text" class="form-control post-title" id="formGroupExampleInput" placeholder="{{title}}">
+            <input type="text" class="form-control post-title" id="formGroupExampleInput" value="{{title}}">
         </div>
         <div class="form-group">
         <label for="post-summary">Post Content</label>
-        <textarea
-          name="summary"
-          class="form-control post-body"
-          id="post-summary"
-          placeholder="{{post_body}}"
-        ></textarea>
+        <textarea name="summary" class="form-control post-body" id="post-summary">
+                    {{post.post_body}}
+                  </textarea>
         </div>
         </form>
       </div>
