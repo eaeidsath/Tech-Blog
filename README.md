@@ -21,7 +21,7 @@ Making this tech blog site helped me become very famliar with the Model View Con
     
 ## Installation
     
-View the deloyed site here [https://tech-blog-eaeidsath-39faba4a4390.herokuapp.com/](https://tech-blog-eaeidsath-39faba4a4390.herokuapp.com/)
+View the deloyed site here [https://infinite-oasis-34090-adbbe6e4db96.herokuapp.com/](https://infinite-oasis-34090-adbbe6e4db96.herokuapp.com/)
 
 To install this application locally, clone this repo to your computer. Navigate to the root directory and run 'npm i' to install the necessary packages. Then run 
     
