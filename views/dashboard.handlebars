@@ -1,4 +1,3 @@
-
 {{#each posts as |post| }}
 <div class="row mb-4 col-md-5 post">
   <div class="">
@@ -13,17 +12,44 @@
     </p>
   </div>
   <div class="card-footer">
-  <button class="btn btn-danger" onclick="deletePost({{post.id}})">Delete</button>
-  <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updateModal">Update</button>
-  <div>
-    {{> update-post}}
-  </div>
+    <button class="btn btn-danger" onclick="deletePost({{post.id}})">Delete</button>
+    <button class="btn btn-info" onclick="updateForm()" {{!--data-bs-toggle="modal" data-bs-target="#updateModal" --}}>Update</button>
+    {{!-- <div>
+      <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Make a New Post</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class="post-form">
+                <div class="mb-3">
+                  <label for="formGroupExampleInput" class="form-label">Title</label>
+                  <input type="text" class="form-control post-title" id="formGroupExampleInput" value="{{post.title}}">
+                </div>
+                <div class="form-group">
+                  <label for="post-summary">Post Content</label>
+                  <textarea name="summary" class="form-control post-body" id="post-summary">
+                    {{post.post_body}}
+                  </textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button onclick="updatePost({{post.id}})" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> --}}
   </div>
 </div>
 {{/each}}
 <div>
   <div>
-  {{> new-post}}
+    {{> new-post}}
   </div>
 </div>
 
